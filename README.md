@@ -1,12 +1,30 @@
 # OpenWAF_TODO
-1. 将各模块文档从Readme.md中分离出，放入doc目录下
-2. 流程图，nginx，OpenWAF关系
-3. 轻松玩转OpenWAF之发布应用
-4. 轻松玩转OpenWAF之防护搭配
-5. 轻松玩转OpenWAF之畅想未来
-6. OpenWAF安装扩展，Debian、CentOS、Ubuntu、ReadHat、Windows及相应Docker版本
-7. OpenWAF前台控制系统及数据库搭建
-8. OpenWAF日志模块扩展，支持各大开源日志服务器，
-9. 大数据分析
-10. 信息共享交流平台
-11. 开源社区安全研发团队组建
+1.  将各模块文档从 Readme.md 中分离出，放入 doc 目录下
+2.  流程图，nginx，OpenWAF，安全关系图，性能图
+3.  轻松玩转 OpenWAF 之发布应用
+4.  轻松玩转 OpenWAF 之防护搭配
+5.  轻松玩转 OpenWAF 之畅想未来
+6.  OpenWAF 安装扩展，Debian、CentOS、Ubuntu、ReadHat、Windows及相应 Docker 版本
+7.  OpenWAF 前台控制系统及数据库搭建
+8.  OpenWAF 日志模块扩展，支持各大日志管理系统，ELK，influxData，syslog
+9.  OpenWAF 性能优化
+10. OpenWAF 框架重构
+11. 翻译文档
+12. 大数据分析
+13. 信息共享交流平台
+14. 开源社区安全研发团队组建
+
+#OpenWAF_DOING
+1. 安全模块的持续更新，实时维护
+2. OpenWAF国内推广（当前可能侧重点在QQ群讨论区）
+3. 文档Readme.md的切割
+4. 收集安全模块素材
+
+#OpenWAF 链接 https://github.com/titansec/OpenWAF
+
+#OpenWAF 希望更多人使用，更多人分享，降低安全门槛，全民OpenWAF防护
+
+#OpenWAF 寻找志同道合者，在OpenWAF平台上，共同研发，共同维护，致力于WEB安全防护道路，成就你我，安全他人
+
+#遵守开源协议，提升开源氛围，从OpenWAF做起，从你我做起
+
