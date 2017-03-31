@@ -2,6 +2,7 @@
 1.  将各模块文档从 Readme.md 中分离出，放入 doc 目录下
 2.  流程图，nginx，OpenWAF，安全关系图，性能图
 3.  轻松玩转 OpenWAF 之发布应用  Getting started with OpenWAF
+4.  轻松玩转 OpenWAF 之规则引擎（系统规则，自定义规则，仿真模式，规则排除）
 4.  轻松玩转 OpenWAF 之防护搭配
 5.  轻松玩转 OpenWAF 之畅想未来
 6.  OpenWAF 安装扩展，Debian、CentOS、Ubuntu、ReadHat、Windows及相应 Docker 版本
