@@ -44,7 +44,10 @@ Alipay
 
 ![image](https://github.com/miracleqi/Alipayimage/blob/master/Alipay%20two-dimension%20code.png)
 
-weixin
+WeChat
 ------
 
 ![image](https://github.com/miracleqi/Alipayimage/blob/master/weixin%20two-dimension%20code.png)
+
+若您希望您的捐赠信息显示在这里，请联系miracleqi25@gmail.com  
+If you would like your donation information to be displayed here, please contact us by miracleqi25@gmail.com  
