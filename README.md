@@ -17,7 +17,7 @@
 15. 信息共享交流平台
 16. 开源社区安全研发团队组建
 
-#OpenWAF_DOING
+# OpenWAF_DOING
 1. 安全模块的持续更新，实时维护
 2. OpenWAF国内推广（当前可能侧重点在QQ群讨论区）
 3. 文档Readme.md的切割
@@ -30,3 +30,21 @@ OpenWAF 希望更多人使用，更多人分享，降低安全门槛，全民Ope
 OpenWAF 寻找志同道合者，在OpenWAF平台上，共同研发，共同维护，致力于WEB安全防护道路，成就你我，安全他人
 
 遵守开源协议，提升开源氛围，从OpenWAF做起，从你我做起
+
+Donation
+========
+
+PayPal
+------
+
+[通过 PayPal 来支持 OpenWAF](https://www.paypal.me/miracleqi)
+
+Alipay
+------
+
+![image](https://github.com/miracleqi/Alipayimage/blob/master/Alipay%20two-dimension%20code.png)
+
+weixin
+------
+
+![image](https://github.com/miracleqi/Alipayimage/blob/master/weixin%20two-dimension%20code.png)
