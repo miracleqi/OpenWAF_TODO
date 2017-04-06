@@ -57,3 +57,6 @@ Resource
                    --with-http_sub_module  
    3.3 make && make install 
 ```
+
+最大连接数 = worker_processes * worker_connections/4
+比如，worker_processes（进程数）是两个，要达到10W并发量，那么worker_connections就要配20W
