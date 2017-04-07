@@ -16,7 +16,7 @@ Installation
 ============
 
 * [Resource](#Resource)
-    * [Debian&Ubuntu](#debian&ubuntu)
+    * [Debian&Ubuntu](#debianubuntu)
     * [Others](#others)
 * [Docker](#docker)
 
