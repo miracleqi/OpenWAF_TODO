@@ -16,14 +16,14 @@ Installation
 ============
 
 * [Resource](#Resource)
-    * [Debian](#debian)
+    * [Debian&Ubuntu](#debian&ubuntu)
     * [Others](#others)
 * [Docker](#docker)
 
 Resource
 --------
 
-### Debian  
+### Debian&Ubuntu  
 
 1. 安装 openresty  
 
@@ -54,29 +54,34 @@ Resource
             到此 pcre 已支持 jit ，也可在第三步编译 openresty 时通过 --with-pcre=/path/to/pcre-xxx/ 指定 pcre 安装路径  
 ```
 
-   安装openresty依赖详见 https://openresty.org/en/installation.html  
+    安装openresty依赖  
+        apt-get install libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl make build-essential
 
+    下载openresty源码
 ```txt
    1.1 cd /opt  
-   1.2 wget -c https://openresty.org/download/openresty-1.11.2.2.tar.gz  
-   1.3 tar -xzvf openresty-1.11.2.2.tar.gz  
+   1.2 wget -c https://openresty.org/download/openresty-1.11.2.1.tar.gz  
+   1.3 tar -xzvf openresty-1.11.2.1.tar.gz  
 ```
 
 2. 安装 OpenWAF  
 
 ```txt
-   2.1 cd /opt  
-   2.2 get OpenWAF  
+   2.1 安装 OpenWAF 依赖
+       apt-get install libgeoip-dev swig  
+   2.2 下载 OpenWAF 源码
+       cd /opt  
        git clone https://github.com/titansec/OpenWAF.git  
-   2.3 move OpenWAF configure  
-       mv /opt/OpenWAF/lib/openresty/ngx_openwaf.conf /etc  
-   2.4 cover openresty configure  
-       mv /opt/OpenWAF/lib/openresty/configure /opt/openresty-1.11.2.1  
-   2.5 the third-party modules move into openresty  
-       mv /opt/OpenWAF/lib/openresty/* /opt/openresty-1.11.2.1/bundle/  
-   2.6 remove OpenWAF/lib/openresty  
+   2.3 将 nginx 配置文件移至 /etc 目录下
+       mv /opt/OpenWAF/lib/openresty/ngx_openwaf.conf /etc  
+   2.4 覆盖 OpenResty 的 configure
+       mv /opt/OpenWAF/lib/openresty/configure /opt/openresty-1.11.2.1  
+   2.5 将 OpenResty 第三方模块移至 OpenResty 目录下
+       mv /opt/OpenWAF/lib/openresty/* /opt/openresty-1.11.2.1/bundle/  
+   2.6 删除空目录 OpenWAF/lib/openresty  
        rm -rf /opt/OpenWAF/lib/openresty  
 ```
+
 3. 编译 openresty  
 
 ```txt
@@ -85,7 +90,8 @@ Resource
                    --with-http_stub_status_module \  
                    --with-http_ssl_module \  
                    --with-http_realip_module \  
-                   --with-http_sub_module  
+                   --with-http_sub_module  \
+                   --with-http_geoip_module
    3.3 make && make install 
 ```
 
