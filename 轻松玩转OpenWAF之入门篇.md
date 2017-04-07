@@ -6,7 +6,6 @@ OpenWAF快速入门，即从安装到上线测试的一个快速体验流程，�
 Table of Contents
 =================
 
-* [名称](#名称)
 * [安装](#安装)
 * [发布应用](#发布应用)
 * [日志](#日志)
@@ -107,30 +106,75 @@ Docker容器
        docker run -d -p 22:22 -p 80:80 -p 443:443 --name openwaf titansec/openwaf
    2.2 enter openwaf
        docker exec -it openwaf /bin/bash
-    
-PS:
-#add bridge address, e.g. 192.168.39.12
-    pipework br0 ContainerName ip/gateway
-    如：
-    pipework br0 openwaf 192.168.39.12/24@192.168.39.253
-
-Problems
-1. pipework: command not found
-
-   git clone https://github.com/jpetazzo/pipework.git
-   cp pipework/pipework /usr/local/bin/
-   
-2. Warning: arping not found; interface may not be immediately reachable
-
-   apt-get install arping
 ```
 
+发布应用
+=======
 
+* [简介](#简介)
+* [接入规则配置简要说明](#接入规则配置简要说明)
+* [发布应用举例](#发布应用举例)
 
+简介
+----
 
+    发布应用，需要配置 OpenWAF 的接入规则，配置文件位置：/opt/OpenWAF/conf/twaf_access_rule.json
+    
+    OpenWAF的接入规则和nginx的配置结合，达到发布应用的目的
 
+接入规则配置简要说明
+------------------
+```
+{
+    "twaf_access_rule": [
+        "rules": [                                 -- 数组，注意先后顺序
+            {                                      
+                "ngx_ssl": false,                  -- nginx认证的开关
+                "ngx_ssl_cert": "path",            -- nginx认证所需PEM证书地址
+                "ngx_ssl_key": "path",             -- nginx认证所需PEM私钥地址
+                "host": "www.baidu.com",           -- 域名，正则匹配
+                "port": 80,                        -- 端口号（缺省80）
+                "path": "\/",                      -- 路径，正则匹配
+                "server_ssl": false,               -- 后端服务器ssl开关
+                "forward": "server_5",             -- 后端服务器upstream名称
+                "forward_addr": "1.1.1.2",         -- 后端服务器ip地址
+                "forward_port": "8080",            -- 后端服务器端口号（缺省80）
+                "policy": "policy_uuid"            -- 安全策略ID
+            }
+        ]
+    }
+}
+```
 
-最大连接数 = worker_processes * worker_connections/4
-比如，worker_processes（进程数）是两个，要达到10W并发量，那么worker_connections就要配20W
+发布应用举例
+-----------
+    接下来结合nginx配置举例讲解接入规则的使用  
+    
+例1：一步体验 OpenWAF  
+
+    如果用 OpenWAF 默认的 /etc/ngx_openwaf.conf 配置文件，且未体验过 OpenWAF，那么只用看此例1即可
+    
+    修改 /opt/OpenWAF/conf/twaf_access_rule.json 文件中第一条接入规则的"forward_addr"值  
+    
+```txt
+    要防护的服务器为192.168.3.1:80，配置如下：
+        "forward_addr": "192.168.3.1"
+    
+    要防护的服务器为22.22.22.22:8090，配置如下：
+        "forward_addr": "22.22.22.22",
+        "forward_port": 8090
+```
+    
+    此时启动nginx，进行访问即可    
+    
+```
+小提示：
+    启动nginx命令  /usr/local/openresty/nginx/sbin/nginx -c /etc/ngx_openwaf.conf  
+    停止nginx命令  /usr/local/openresty/nginx/sbin/nginx -c /etc/ngx_openwaf.conf -s stop
+```
+
+    默认SQLI，CC防护都是开启的，可以进行SQL注入或CC攻击，看防护效果  
+
+    深入防护，深入测试，请看其他文档  
 
 
