@@ -1,4 +1,4 @@
-Name
+名称
 ====
 
 OpenWAF快速入门，即从安装到上线测试的一个快速体验流程，包括安装，发布应用，查看日志，上线测试
@@ -6,21 +6,21 @@ OpenWAF快速入门，即从安装到上线测试的一个快速体验流程，�
 Table of Contents
 =================
 
-* [Name](#name)
-* [Installation](#installation)
-* [Access_rule](#access_rule)
-* [log](#log)
-* [rule](#rule)
+* [名称](#名称)
+* [安装](#安装)
+* [发布应用](#发布应用)
+* [日志](#日志)
+* [规则](#规则)
 
-Installation
-============
+安装
+====
 
-* [Resource](#Resource)
+* [源码安装](#源码安装)
     * [Debian&Ubuntu](#debianubuntu)
     * [Others](#others)
-* [Docker](#docker)
+* [Docker容器](#docker容器)
 
-Resource
+源码安装
 --------
 
 ### Debian&Ubuntu  
@@ -57,7 +57,8 @@ Resource
     安装openresty依赖  
         apt-get install libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl make build-essential
 
-    下载openresty源码
+    下载openresty源码
+    
 ```txt
    1.1 cd /opt  
    1.2 wget -c https://openresty.org/download/openresty-1.11.2.1.tar.gz  
@@ -95,5 +96,41 @@ Resource
    3.3 make && make install 
 ```
 
+Docker容器
+----------
+```txt
+1. pull docker images from repository
+   docker pull titansec/openwaf
+
+2. start-up docker
+   2.1 docker run, named openwaf
+       docker run -d -p 22:22 -p 80:80 -p 443:443 --name openwaf titansec/openwaf
+   2.2 enter openwaf
+       docker exec -it openwaf /bin/bash
+    
+PS:
+#add bridge address, e.g. 192.168.39.12
+    pipework br0 ContainerName ip/gateway
+    如：
+    pipework br0 openwaf 192.168.39.12/24@192.168.39.253
+
+Problems
+1. pipework: command not found
+
+   git clone https://github.com/jpetazzo/pipework.git
+   cp pipework/pipework /usr/local/bin/
+   
+2. Warning: arping not found; interface may not be immediately reachable
+
+   apt-get install arping
+```
+
+
+
+
+
+
 最大连接数 = worker_processes * worker_connections/4
 比如，worker_processes（进程数）是两个，要达到10W并发量，那么worker_connections就要配20W
+
+
